@@ -1,1 +1,59 @@
-# Steps Involve In reading the Code
+<html>
+    <head>
+
+    </head>
+    <body bgcolor="#F0F8FF">
+        <center><h3>STEPS INVOLVE IN RUNNING RAY CASTING IMPLEMENATATION </h3></center>
+        <p> The RayCasting implementation is done in C++ using GLFW dependencies</p>
+        <b><p> I clone the repository from <a href="https://github.com/ummarikram/LineOfSight"> https://github.com/ummarikram/LineOfSight</a></p></b>
+        
+        <h5>I LAUNCH MY IDE WHICH IS CODEBLOCKS</h5>
+        <ol>
+            <li>I created a new project by selecting the option for a "Console Application" in a new dialog window that pops up and click "Go".</li>
+            <li>In the next window, i choose the programming language, which is C++, and click "Next".</li>
+            <li>In the following window, i provide a name for the project and click "Next".</li>
+            <li>The next window display the compiler type i'm using. I simply click "Next" to proceed.</li>
+    
+            <li>I open the console application project that you just created.</li>
+            <li>I copy the code from the cloned repository, <br>
+                    Paste the copied code into the appropriate file within the project which is the main class.</li>
+            <li>Save the changes made to the project files.</li>
+        </ol>
+        <p>
+            <b> Note:</b> The reason for copying the code from the cloned repository to the newly created console application
+             is that it is only a single file, <br>not a complete project folder. If it were a project folder, 
+            i could simply open it directly in CodeBlocks without creating a new console application project.
+        </p>
+        <h3> I build the project and run it, but it came back with dependencies issue </h3>
+
+        <h5>THIS IS HOW I SETUP GLFW DEPENDENCIES TO WORK WITH THE CLONE CODE </h5>
+        <ol>
+            <li>Right-click on the project folder and select "Properties".</li>
+            <li>In the properties window, click on the "Project Build Options" tab.</li>
+            <li>In the subsequent pop-up window, click on "Search Directories".</li>
+            <li>Click on "Add" to add the include folder that you extracted to the compiler tab.</li>
+            <li>Switch to the "Linker" tab and add the lib folder to it.</li>
+            <li>Locate the "Linker Settings" section next to the search directories and add three libraries to it, which is step 7 and 8 respectively.</li>
+            <li>Click on "Add" and select the first two libraries located in the library folder that you extracted out.</li>
+            <li>Click on "Add" again and locate "C:/Program Files/CodeBlocks/MinGW/lib" to find the library being added, which is "libopengl32.a".</li>
+            <li>Click "OK" to save the changes.</li>
+            <li>Finally, click "OK" in the project properties dialog to close it.</li>
+          </ol>
+          
+        
+
+        <h5> RUNNING THE CODE AFTER SETTING UP THE DEPENDENCIES </h5>
+
+        <ol>
+            <li>I Rebuild the project.</li>
+            <li>I encounter errors related to the Math module during the run process.</li>
+            <li>I Include the appropriate math library in the code to address all the math class error.</li>
+            <li>I Add an additional line of code at the top of the code file to define the GLFW library.</li>
+            <li>This step is necessary because the original user of the code omitted it, resulting in errors.</li>
+          </ol>
+          
+
+
+
+    </body>
+</html>
