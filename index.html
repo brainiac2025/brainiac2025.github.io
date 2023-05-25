@@ -3,9 +3,9 @@
 
     </head>
     <body bgcolor="#F0F8FF">
-        <center><h3>STEPS INVOLVE IN RUNNING RAY CASTING IMPLEMENATATION </h3></center>
-        <p> The RayCasting implementation is done in C++ using GLFW dependencies</p>
-        <b><p> I clone the repository from <a href="https://github.com/ummarikram/LineOfSight"> https://github.com/ummarikram/LineOfSight</a></p></b>
+        <center><h3>STEPS INVOLVE IN RUNNING MARCHING CUBE IMPLEMENATATION </h3></center>
+        <p> The Matching Cube implementation is done in C++ using <a href="https://www.glfw.org/"> GLFW </a> and <a href="https://glew.sourceforge.net/"> GLEW </a> dependencies</p>
+        <b><p> I clone the repository from <a href="https://github.com/Krafpy/Marching-Cubes/"> https://github.com/Krafpy/Marching-Cubes/</a></p></b>
         
         <h5>I LAUNCH MY IDE WHICH IS CODEBLOCKS</h5>
         <ol>
@@ -14,48 +14,107 @@
             <li>In the following window, i provide a name for the project and click "Next".</li>
             <li>The next window display the compiler type i'm using. I simply click "Next" to proceed.</li>
     
-            <li>I open the console application project that you just created.</li>
-            <li>I copy the code from the cloned repository, <br>
-                    Paste the copied code into the appropriate file within the project which is the main class.</li>
+            <li>I open the console application project that i just created.</li>
+            <li>I add the files from the src folder and also add the files from the include folder <br>
+                which is located inside the clone project to the newly created project folder
+                </li>
             <li>Save the changes made to the project files.</li>
         </ol>
         <p>
-            <b> Note:</b> The reason for copying the code from the cloned repository to the newly created console application
-             is that it is only a single file, <br>not a complete project folder. If it were a project folder, 
-            i could simply open it directly in CodeBlocks without creating a new console application project.
+            <b> Note:</b> The reason for adding the files  from the cloned repository to the newly created console application<br>
+             folder is because the clone repository was not originally made from codeblock. <br>
+             Therefore it was not able to open as existing project
         </p>
-        <h3> I build the project and run it, but it came back with dependencies issue </h3>
+        <h5> COPY HEADER, LIBRARY AND DLL FILE FROM EXTRACTED GLEW AND GLFW TO SOLVE DEPENDENCIES ISSUES </h5>
 
-        <h5>THIS IS HOW I SETUP GLFW DEPENDENCIES TO WORK WITH THE CLONE CODE </h5>
-        <ol>
-            <li>I download the dependency which is GLFW from <a href="https://www.glfw.org/"> https://www.glfw.org/ </a> </li>
-            <li> I extract it and copy the include folder and the lib-mingw-w64 to a new folder </li>
-            <li>I Right-click on the project folder i just created inside my IDE and select "Properties".</li>
-            <li>In the properties window, i click on the "Project Build Options" tab.</li>
-            <li>In the subsequent pop-up window, i click on "Search Directories".</li>
-            <li>I click on "Add" to add the include folder that you extracted, to the compiler tab.</li>
-            <li>Switch to the "Linker" tab and add the lib folder to it.</li>
-            <li>Locate the "Linker Settings" section next to the search directories and add three libraries to it, which is step 7 and 8 respectively.</li>
-            <li>I click on "Add" and select the first two libraries located in the library folder that you extracted out.</li>
-            <li>I click on "Add" again and locate "C:/Program Files/CodeBlocks/MinGW/lib" to find the library being added, which is "libopengl32.a".</li>
-            <li>I click "OK" to save the changes.</li>
-            <li>Finally, click "OK" in the project properties dialog to close it.</li>
-          </ol>
+          <ol>
+            <li>
+              <b>I performed the following file copies from the extracted GLEW folder:</b>
+              <ul>
+                <li>
+                  From the include\GL folder:
+                  <ul>
+                    <li>eglew.h</li>
+                    <li>glew.h</li>
+                    <li>glxew.h</li>
+                    <li>wglew.h</li>
+                  </ul>
+                  Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\include
+                </li>
+                <li>
+                  From the lib\Release\x64 folder:
+                  <ul>
+                    <li>gle32.lib</li>
+                    <li>glew32s.lb</li>
+                  </ul>
+                  Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib
+                </li>
+                <li>
+                  From the bin\Release\x64 folder:
+                  <ul>
+                    <li>glew32.dll</li>
+                  </ul>
+                  Destination Folder: C:\Windows\System32
+                </li>
+              </ul>
+            </li>
+
+            <li>
+                <b> I copied the following files from the extracted GLFW folder:</b>
+                <ul>
+                  <li>
+                    From the GLFW include\GLFW folder:
+                    <ul>
+                      <li>glfw3.h</li>
+                      <li>glfw3native.h</li>
+                    </ul>
+                    Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\include
+                  </li>
+                  <li>
+                    From the GLFW lib-mingw-w64 folder:
+                    <ul>
+                      <li>libglfw3.a</li>
+                      <li>libglfw3dll.a</li>
+                    </ul>
+                    Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib
+                  </li>
+                  <li>
+                    From the GLFW lib-mingw-w64 folder:
+                    <ul>
+                      <li>glfw3.dll</li>
+                    </ul>
+                    Destination Folder: C:\Windows\System32
+                  </li>
+                </ul>
+              </li>
+
+            </ol>
+             
+            <ol>
+                <li>
+                    <b><p>Change Code Block Linker Settings</p></b>
+                    <ul>
+                        <li>Open the CodeBlocks IDE.</li>
+                        <li>From the menu bar, click on "Settings".</li>
+                        <li>In the settings menu, locate and click on the "Compiler" option.</li>
+                        <li>In the compiler settings dialog, navigate to the "Linker settings" tab.</li>
+                        <li>In the "Link libraries" box, click the "Add" button.</li>
+                        <li>Add the following libraries:<b> glew32s.lb, glew32.lib, libglfw3.a, libopengl32.a, libgdi32.a, libglu32.a</b>.</li>
+                        <li>Ensure that all the linker libraries are linked from the directory: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib.</li>
+                    </ul>
+                </li>
+            </ol>
+            
+         
+            
+            <p>
+                <b>NOTE</b> I make sure that glew32s.lib is at the top of the list
+                
+            </p>
           
-        
-
-        <h5> RUNNING THE CODE AFTER SETTING UP THE DEPENDENCIES </h5>
-
-        <ol>
-            <li>I Rebuild the project.</li>
-            <li>I encounter errors related to the Math module during the run process.</li>
-            <li>I Include the appropriate math library in the code to address all the math class error.</li>
-            <li>I Add an additional line of code at the top of the code file to define the GLFW library.</li>
-            <li>This step is necessary because the original user of the code omitted it, resulting in errors.</li>
-          </ol>
-          
-
-
+          <p>
+            I rebuild the project and run it successfully.
+          </p>
 
     </body>
 </html>
