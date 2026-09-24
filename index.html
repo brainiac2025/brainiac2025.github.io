@@ -83,6 +83,18 @@
 
     .project { margin: 0 0 48px; }
     .project h3 { font-size: 1.3rem; font-weight: 600; margin: 0 0 2px; }
+    .status {
+      font-size: 0.7rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 1px 8px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
     .meta { font-size: 0.85rem; color: var(--faint); margin: 0 0 10px; }
     .question { font-style: italic; color: var(--muted); margin: 0 0 12px; }
     .project p { margin: 0 0 12px; }
@@ -238,6 +250,34 @@
       </div>
       <div class="actions">
         <a href="https://github.com/brainiac2025/ruleforge">Code and write-up</a>
+      </div>
+    </article>
+
+    <!-- Nova -->
+    <article class="project">
+      <h3>Nova compiler <span class="status">in progress</span></h3>
+      <div class="meta">C++20 · CMake · compilers</div>
+      <p class="question">How does a compiler actually work, from raw text going in to machine code coming out?</p>
+      <p>
+        Nova is a small programming language, and this is its compiler,
+        written from scratch in C++20 to learn every stage by building it.
+        The front end works today: a lexer, a hand-written recursive descent
+        parser with correct operator precedence, an AST walked through the
+        visitor pattern, and semantic checks for undeclared and duplicate
+        variables.
+      </p>
+      <pre>let width  = 4;
+let height = 10;
+let area   = (width + height) * 2;</pre>
+      <div class="finding">
+        <strong>Next:</strong> control flow and functions, a type checker,
+        then an IR with SSA form, classic optimisations (constant folding,
+        dead code elimination, GVN) and LLVM code generation. The README
+        keeps an up-to-date list of what's done and what's left.
+      </div>
+      <div class="actions">
+        <a href="https://github.com/brainiac2025/nova-compiler">Code</a>
+        <a href="https://github.com/brainiac2025/nova-compiler/blob/main/ROADMAP.md">Roadmap</a>
       </div>
     </article>
 
