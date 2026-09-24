@@ -1,0 +1,135 @@
+<html>
+    <head>
+
+    </head>
+    <body bgcolor="#F0F8FF">
+        <p><a href="index.html">&larr; Back to home</a></p>
+        <center><h3>STEPS INVOLVE IN RUNNING MARCHING CUBE IMPLEMENATATION </h3></center>
+        <p> The Matching Cube implementation is done in C++ using <a href="https://www.glfw.org/"> GLFW </a> and <a href="https://glew.sourceforge.net/"> GLEW </a> dependencies</p>
+        <b><p> I clone the repository from <a href="https://github.com/Krafpy/Marching-Cubes/"> https://github.com/Krafpy/Marching-Cubes/</a></p></b>
+        
+        <h5>I LAUNCH MY IDE WHICH IS CODEBLOCKS</h5>
+        <ol>
+            <li>I created a new project by selecting the option for a "Console Application" in a new dialog window that pops up and click "Go".</li>
+            <li>In the next window, i choose the programming language, which is C++, and click "Next".</li>
+            <li>In the following window, i provide a name for the project and click "Next".</li>
+            <li>The next window display the compiler type i'm using. I simply click "Next" to proceed.</li>
+    
+            <li>I open the console application project that i just created.</li>
+            <li>I add the files from the src folder and also add the files from the include folder <br>
+                which is located inside the clone project to the newly created project folder
+                </li>
+            <li>Save the changes made to the project files.</li>
+        </ol>
+        <p>
+            <b> Note:</b> The reason for adding the files  from the cloned repository to the newly created console application<br>
+             folder is because the clone repository was not originally made from codeblock. <br>
+             Therefore it was not able to open as existing project
+        </p>
+        <h5> COPY HEADER, LIBRARY AND DLL FILE FROM EXTRACTED GLEW AND GLFW TO SOLVE DEPENDENCIES ISSUES </h5>
+
+          <ol>
+            <li>
+              <b>I performed the following file copies from the extracted GLEW folder:</b>
+              <ul>
+                <li>
+                  From the include\GL folder:
+                  <ul>
+                    <li>eglew.h</li>
+                    <li>glew.h</li>
+                    <li>glxew.h</li>
+                    <li>wglew.h</li>
+                  </ul>
+                  Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\include
+                </li>
+                <li>
+                  From the lib\Release\x64 folder:
+                  <ul>
+                    <li>gle32.lib</li>
+                    <li>glew32s.lb</li>
+                  </ul>
+                  Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib
+                </li>
+                <li>
+                  From the bin\Release\x64 folder:
+                  <ul>
+                    <li>glew32.dll</li>
+                  </ul>
+                  Destination Folder: C:\Windows\System32
+                </li>
+              </ul>
+            </li>
+
+            <li>
+                <b> I copied the following files from the extracted GLFW folder:</b>
+                <ul>
+                  <li>
+                    From the GLFW include\GLFW folder:
+                    <ul>
+                      <li>glfw3.h</li>
+                      <li>glfw3native.h</li>
+                    </ul>
+                    Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\include
+                  </li>
+                  <li>
+                    From the GLFW lib-mingw-w64 folder:
+                    <ul>
+                      <li>libglfw3.a</li>
+                      <li>libglfw3dll.a</li>
+                    </ul>
+                    Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib
+                  </li>
+                  <li>
+                    From the GLFW lib-mingw-w64 folder:
+                    <ul>
+                      <li>glfw3.dll</li>
+                    </ul>
+                    Destination Folder: C:\Windows\System32
+                  </li>
+                </ul>
+              </li>
+
+            </ol>
+             
+            <ol>
+                <li>
+                    <b><p>Change Code Block Linker Settings</p></b>
+                    <ul>
+                        <li>Open the CodeBlocks IDE.</li>
+                        <li>From the menu bar, click on "Settings".</li>
+                        <li>In the settings menu, locate and click on the "Compiler" option.</li>
+                        <li>In the compiler settings dialog, navigate to the "Linker settings" tab.</li>
+                        <li>In the "Link libraries" box, click the "Add" button.</li>
+                        <li>Add the following libraries:<b> glew32s.lb, glew32.lib, libglfw3.a, libopengl32.a, libgdi32.a, libglu32.a</b>.</li>
+                        <li>Ensure that all the linker libraries are linked from the directory: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib.</li>
+                    </ul>
+                </li>
+            </ol>
+            
+         
+            
+            <p>
+                <b>NOTE</b> I make sure that glew32s.lib is at the top of the list
+                
+            </p>
+          
+          <p>
+            I rebuild the project and run it successfully. <br> I used the control provided by the author of the code and it works succesfully.
+          </p>
+        
+        <h2>OUTPUT IMAGE</h2>
+            <img src="output1.jpeg" alt="Trulli" width="500" height="333"> &nbsp; &nbsp;
+        
+             <img src="output2.jpeg" alt="Trulli" width="500" height="333"><br>
+        <img src="output3.jpeg" alt="Trulli" width="500" height="333"> &nbsp; &nbsp;
+        <img src="output4.jpeg" alt="Trulli" width="500" height="333"> <br>
+        
+        <h1>OUTPUT VIDEO</h1>
+
+        <video width="500" height=""333" controls>
+          <source src="Untitled.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+    </body>
+</html>

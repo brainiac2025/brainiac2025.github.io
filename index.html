@@ -1,134 +1,410 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Afeez Amuzat</title>
+  <meta name="description" content="Research and software projects by Afeez Amuzat: causal discovery, e-graphs and rewrite rules, simulation, evolution and performance tuning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcf9;
+      --text: #1f1f1f;
+      --muted: #5c5c5c;
+      --faint: #8a8a8a;
+      --rule: #e4e1da;
+      --accent: #8c1d18;
+      --card: #f6f4ef;
+      --code: #f1eee7;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #16171a;
+        --text: #e8e6e1;
+        --muted: #a9a6a0;
+        --faint: #7d7a75;
+        --rule: #2d2e32;
+        --accent: #e0857f;
+        --card: #1e1f23;
+        --code: #25262b;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #16171a;
+      --text: #e8e6e1;
+      --muted: #a9a6a0;
+      --faint: #7d7a75;
+      --rule: #2d2e32;
+      --accent: #e0857f;
+      --card: #1e1f23;
+      --code: #25262b;
+    }
 
-    </head>
-    <body bgcolor="#F0F8FF">
-        <center><h3>STEPS INVOLVE IN RUNNING MARCHING CUBE IMPLEMENATATION </h3></center>
-        <p> The Matching Cube implementation is done in C++ using <a href="https://www.glfw.org/"> GLFW </a> and <a href="https://glew.sourceforge.net/"> GLEW </a> dependencies</p>
-        <b><p> I clone the repository from <a href="https://github.com/Krafpy/Marching-Cubes/"> https://github.com/Krafpy/Marching-Cubes/</a></p></b>
-        
-        <h5>I LAUNCH MY IDE WHICH IS CODEBLOCKS</h5>
-        <ol>
-            <li>I created a new project by selecting the option for a "Console Application" in a new dialog window that pops up and click "Go".</li>
-            <li>In the next window, i choose the programming language, which is C++, and click "Next".</li>
-            <li>In the following window, i provide a name for the project and click "Next".</li>
-            <li>The next window display the compiler type i'm using. I simply click "Next" to proceed.</li>
-    
-            <li>I open the console application project that i just created.</li>
-            <li>I add the files from the src folder and also add the files from the include folder <br>
-                which is located inside the clone project to the newly created project folder
-                </li>
-            <li>Save the changes made to the project files.</li>
-        </ol>
-        <p>
-            <b> Note:</b> The reason for adding the files  from the cloned repository to the newly created console application<br>
-             folder is because the clone repository was not originally made from codeblock. <br>
-             Therefore it was not able to open as existing project
-        </p>
-        <h5> COPY HEADER, LIBRARY AND DLL FILE FROM EXTRACTED GLEW AND GLFW TO SOLVE DEPENDENCIES ISSUES </h5>
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 16px 80px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-          <ol>
-            <li>
-              <b>I performed the following file copies from the extracted GLEW folder:</b>
-              <ul>
-                <li>
-                  From the include\GL folder:
-                  <ul>
-                    <li>eglew.h</li>
-                    <li>glew.h</li>
-                    <li>glxew.h</li>
-                    <li>wglew.h</li>
-                  </ul>
-                  Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\include
-                </li>
-                <li>
-                  From the lib\Release\x64 folder:
-                  <ul>
-                    <li>gle32.lib</li>
-                    <li>glew32s.lb</li>
-                  </ul>
-                  Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib
-                </li>
-                <li>
-                  From the bin\Release\x64 folder:
-                  <ul>
-                    <li>glew32.dll</li>
-                  </ul>
-                  Destination Folder: C:\Windows\System32
-                </li>
-              </ul>
-            </li>
+    header h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+    .subtitle { color: var(--muted); margin: 0 0 18px; font-style: italic; }
+    .links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.95rem; margin: 0 0 8px; }
 
-            <li>
-                <b> I copied the following files from the extracted GLFW folder:</b>
-                <ul>
-                  <li>
-                    From the GLFW include\GLFW folder:
-                    <ul>
-                      <li>glfw3.h</li>
-                      <li>glfw3native.h</li>
-                    </ul>
-                    Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\include
-                  </li>
-                  <li>
-                    From the GLFW lib-mingw-w64 folder:
-                    <ul>
-                      <li>libglfw3.a</li>
-                      <li>libglfw3dll.a</li>
-                    </ul>
-                    Destination Folder: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib
-                  </li>
-                  <li>
-                    From the GLFW lib-mingw-w64 folder:
-                    <ul>
-                      <li>glfw3.dll</li>
-                    </ul>
-                    Destination Folder: C:\Windows\System32
-                  </li>
-                </ul>
-              </li>
+    h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 6px;
+      margin: 56px 0 24px;
+    }
+    .interests { margin: 0; color: var(--text); }
 
-            </ol>
-             
-            <ol>
-                <li>
-                    <b><p>Change Code Block Linker Settings</p></b>
-                    <ul>
-                        <li>Open the CodeBlocks IDE.</li>
-                        <li>From the menu bar, click on "Settings".</li>
-                        <li>In the settings menu, locate and click on the "Compiler" option.</li>
-                        <li>In the compiler settings dialog, navigate to the "Linker settings" tab.</li>
-                        <li>In the "Link libraries" box, click the "Add" button.</li>
-                        <li>Add the following libraries:<b> glew32s.lb, glew32.lib, libglfw3.a, libopengl32.a, libgdi32.a, libglu32.a</b>.</li>
-                        <li>Ensure that all the linker libraries are linked from the directory: C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\lib.</li>
-                    </ul>
-                </li>
-            </ol>
-            
-         
-            
-            <p>
-                <b>NOTE</b> I make sure that glew32s.lib is at the top of the list
-                
-            </p>
-          
-          <p>
-            I rebuild the project and run it successfully. <br> I used the control provided by the author of the code and it works succesfully.
-          </p>
-        
-        <h2>OUTPUT IMAGE</h2>
-            <img src="output1.jpeg" alt="Trulli" width="500" height="333"> &nbsp; &nbsp;
-        
-             <img src="output2.jpeg" alt="Trulli" width="500" height="333"><br>
-        <img src="output3.jpeg" alt="Trulli" width="500" height="333"> &nbsp; &nbsp;
-        <img src="output4.jpeg" alt="Trulli" width="500" height="333"> <br>
-        
-        <h1>OUTPUT VIDEO</h1>
+    .project { margin: 0 0 48px; }
+    .project h3 { font-size: 1.3rem; font-weight: 600; margin: 0 0 2px; }
+    .meta { font-size: 0.85rem; color: var(--faint); margin: 0 0 10px; }
+    .question { font-style: italic; color: var(--muted); margin: 0 0 12px; }
+    .project p { margin: 0 0 12px; }
+    .finding {
+      background: var(--card);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 0.97rem;
+    }
+    .finding strong { font-weight: 600; }
+    figure { margin: 16px 0; }
+    figure img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 4px; background: #fff; }
+    figcaption { font-size: 0.85rem; color: var(--faint); margin-top: 6px; }
+    .actions { font-size: 0.95rem; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+    .actions a::before { content: "→ "; }
 
-        <video width="500" height=""333" controls>
-          <source src="Untitled.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+    table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 12px 0; }
+    th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--rule); }
+    th { font-weight: 600; color: var(--muted); }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .table-wrap { overflow-x: auto; }
 
-    </body>
+    code, pre {
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 0.8rem;
+      background: var(--code);
+      border-radius: 3px;
+    }
+    code { padding: 1px 4px; }
+    pre { padding: 10px 12px; overflow-x: auto; line-height: 1.5; margin: 12px 0; }
+
+    .earlier { list-style: none; padding: 0; margin: 0; }
+    .earlier li { margin: 0 0 14px; }
+    .earlier .group { font-weight: 600; }
+    .earlier .desc { color: var(--muted); font-size: 0.95rem; }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      font-size: 0.85rem;
+      color: var(--faint);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.8rem;
+      padding: 2px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 17px; }
+      main { padding-top: 36px; }
+      header h1 { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <header>
+    <h1>Afeez Amuzat</h1>
+    <p class="subtitle">Software engineer · independent research projects</p>
+    <div class="links">
+      <a href="https://github.com/brainiac2025">GitHub</a>
+      <a href="#research">Research projects</a>
+      <a href="#earlier">Earlier work</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p class="interests">
+      I like building small systems that answer one clear question, and then
+      checking whether the answer holds up. Most of my recent work sits
+      somewhere between compilers, machine learning and simulation:
+      equality saturation and rewrite rules, causal discovery,
+      performance tuning, and agent-based models. Each project below comes
+      with its code, its tests and a write-up that covers what worked and
+      what didn't.
+    </p>
+  </section>
+
+  <section id="research">
+    <h2>Research projects</h2>
+
+    <!-- Causal-EGraph -->
+    <article class="project">
+      <h3>Causal-EGraph</h3>
+      <div class="meta">Python · causal discovery · equality saturation</div>
+      <p class="question">Does keeping many candidate causal graphs at once, instead of greedily committing to one, find the right structure more often?</p>
+      <p>
+        Most causal discovery methods (PC, GES, NOTEARS) climb toward a
+        single best graph. This project keeps many statistically
+        indistinguishable graphs in an e-graph, explores them with rewrite
+        rules, and picks the best DAG at the end using BIC or a learned cost
+        model. It's built from scratch: skeleton search, Meek's rules, BIC
+        scoring, exact extraction by dynamic programming, and benchmarks
+        against PC and GES.
+      </p>
+      <div class="finding">
+        <strong>Finding:</strong> across 4,788 synthetic trials, exhaustive
+        search recovered the correct structure <strong>92.7%</strong> of the
+        time vs <strong>67.9%</strong> for a greedy search using the same
+        scores. On data from the real Sachs protein network, it matches PC
+        and beats GES at the original experiment's sample size, and all three
+        recover the exact structure at 20,000 samples.
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sachs network, CPDAG SHD</th><th class="num">Ours</th><th class="num">PC</th><th class="num">GES</th></tr></thead>
+          <tbody>
+            <tr><td>853 samples (original experiment)</td><td class="num">12</td><td class="num">12</td><td class="num">17</td></tr>
+            <tr><td>5,000 samples</td><td class="num">14</td><td class="num">14</td><td class="num">0</td></tr>
+            <tr><td>20,000 samples</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="actions">
+        <a href="https://github.com/brainiac2025/Casual_Discovery">Code</a>
+        <a href="https://github.com/brainiac2025/Casual_Discovery/tree/main/docs/milestones">Build notes</a>
+      </div>
+    </article>
+
+    <!-- RuleForge -->
+    <article class="project">
+      <h3>RuleForge</h3>
+      <div class="meta">Python · egglog · program synthesis · 2026</div>
+      <p class="question">If you already know two programs are equivalent, how much of the rewrite rule connecting them can you recover automatically?</p>
+      <p>
+        SkeleShare (CGO 2026) optimises programs built from skeletons like
+        <code>Mv</code> and <code>Conv</code> using hand-written rewrite
+        rules. RuleForge takes pairs of equivalent programs, anti-unifies
+        them (Plotkin's least general generalisation, with lambdas handled up
+        to renaming), reads off a rewrite rule, and checks it in egglog.
+      </p>
+      <pre>Mv(?w0, ?w1, dotF)  →  PaddedMv(?w0, ?w1, dotF)</pre>
+      <div class="finding">
+        <strong>Finding:</strong> all seven rules tested from the paper's
+        Figure 10 were recovered with the expected shape, and all load and
+        fire in egglog. The write-up is upfront about the limits: the rules
+        come out narrower than the paper's, and the check confirms the rules
+        fire, not that they preserve meaning.
+      </div>
+      <div class="actions">
+        <a href="https://github.com/brainiac2025/ruleforge">Code and write-up</a>
+      </div>
+    </article>
+
+    <!-- DanfoSim -->
+    <article class="project">
+      <h3>DanfoSim</h3>
+      <div class="meta">Python · PyTorch · agent-based simulation · transport</div>
+      <p class="question">Does the flexibility of Lagos's informal danfo minibuses actually beat a fixed-route, fixed-schedule bus system on the same roads?</p>
+      <p>
+        A multi-agent simulation of Lagos's informal transit: vehicles that
+        leave when they're full enough, pick up passengers anywhere along the
+        road, and sometimes cut a trip short to chase better demand. It runs
+        against a fixed-route baseline with the same network, fleet and
+        passengers, 200 simulated days at once as batched tensor operations.
+        Every parameter is documented as either sourced or tuned.
+      </p>
+      <figure>
+        <img src="https://raw.githubusercontent.com/brainiac2025/Danfosim/main/docs/figures/dashboard.gif" alt="A simulated day: informal vehicles and queues on the left, the fixed-route baseline on the right" loading="lazy">
+        <figcaption>A simulated day, informal (left) vs fixed-route (right).</figcaption>
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>40 vehicles, 200 days</th><th class="num">Mean wait</th><th class="num">Travel time</th><th class="num">Trips served</th></tr></thead>
+          <tbody>
+            <tr><td>Informal</td><td class="num">49.8 min</td><td class="num">19.8 min</td><td class="num">297,407</td></tr>
+            <tr><td>Fixed-route</td><td class="num">72.4 min</td><td class="num">37.8 min</td><td class="num">129,400</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="finding">
+        <strong>Finding:</strong> informal transit wins overall, serving more
+        than twice the trips with the same fleet. The exception is the
+        evening peak, where the two are statistically indistinguishable.
+      </div>
+      <div class="actions">
+        <a href="https://github.com/brainiac2025/Danfosim">Code</a>
+        <a href="https://github.com/brainiac2025/Danfosim/blob/main/docs/REPORT.md">Report</a>
+      </div>
+    </article>
+
+    <!-- RedQueen -->
+    <article class="project">
+      <h3>RedQueen</h3>
+      <div class="meta">Python · PyTorch · artificial life · evolution</div>
+      <p class="question">When predators and prey evolve their own neural-network brains, is there a real arms race, or does it just look like one?</p>
+      <p>
+        A 2D world where up to 2,000 prey and 200 predators each carry a tiny
+        evolved neural network, with no reward function, just energy and
+        reproduction. Instead of judging by eye, I fixed a testable
+        definition of "arms race" before running anything, and measured each
+        species against frozen opponents across 5 seeds of 100,000 steps.
+      </p>
+      <figure>
+        <img src="https://raw.githubusercontent.com/brainiac2025/RedQueen/main/media/playback_demo.gif" alt="Prey (blue) flocking, predators (red) hunting, food (green) depleting" loading="lazy">
+        <figcaption>Prey (blue) form flocks, predators (red) hunt them, food (green) runs out in crowded areas.</figcaption>
+      </figure>
+      <div class="finding">
+        <strong>Finding:</strong> no arms race. Predators improved
+        significantly in every seed, while prey never did. This is one-sided
+        predator escalation, not a Red Queen dynamic, and it held across
+        sweeps of mutation rate, population size and sensing setup.
+      </div>
+      <div class="actions">
+        <a href="https://github.com/brainiac2025/RedQueen">Code</a>
+        <a href="https://github.com/brainiac2025/RedQueen/blob/main/writeup.md">Write-up</a>
+      </div>
+    </article>
+
+    <!-- Matmul autotuner -->
+    <article class="project">
+      <h3>Matrix Multiply Autotuner</h3>
+      <div class="meta">C · Python · performance tuning</div>
+      <p class="question">How much faster can the same matrix multiply get just by searching over tile size and loop unrolling?</p>
+      <p>
+        A tunable C matrix multiply, a timing harness that takes the median of
+        repeated runs, a correctness check against NumPy, and two searches:
+        brute force over all 24 settings, and random sampling of 8.
+      </p>
+      <figure>
+        <img src="https://raw.githubusercontent.com/brainiac2025/matmul-autotuner/main/results/runtime_by_config.png" alt="Runtime for each tile size and unroll factor" loading="lazy">
+        <figcaption>Runtime for each tile size and unroll factor, 256×256 matrices.</figcaption>
+      </figure>
+      <div class="finding">
+        <strong>Finding:</strong> about <strong>1.7×</strong> faster (22.0 ms
+        → 12.7 ms) from changing two numbers. Unrolling mattered most; tile
+        size barely mattered at this matrix size. Random search on a third of
+        the settings landed within about 8% of the best.
+      </div>
+      <div class="actions">
+        <a href="https://github.com/brainiac2025/matmul-autotuner">Code</a>
+      </div>
+    </article>
+  </section>
+
+  <section id="earlier">
+    <h2>Earlier work</h2>
+    <ul class="earlier">
+      <li>
+        <span class="group">Systems programming in C</span><br>
+        <span class="desc">
+          A reimplementation of <a href="https://github.com/brainiac2025/printf">printf</a>,
+          a <a href="https://github.com/brainiac2025/monty">Monty bytecode interpreter</a> (stacks and queues),
+          <a href="https://github.com/brainiac2025/sorting_algorithms">sorting algorithms</a> with Big-O analysis,
+          <a href="https://github.com/brainiac2025/binary_trees">binary trees</a>,
+          and the <a href="https://github.com/brainiac2025/alx-low_level_programming">low-level programming</a> track
+          (pointers, memory, linked lists, static libraries).
+        </span>
+      </li>
+      <li>
+        <span class="group">Shell and DevOps</span><br>
+        <span class="desc">
+          A <a href="https://github.com/brainiac2025/TEST_SUITE">test suite for a simple shell</a> covering 16 feature stages,
+          and the <a href="https://github.com/brainiac2025/alx-system_engineering-devops">system engineering track</a>
+          (shell, processes, regex, networking, web infrastructure).
+        </span>
+      </li>
+      <li>
+        <span class="group">Python</span><br>
+        <span class="desc">
+          An <a href="https://github.com/brainiac2025/AirBnB_clone">AirBnB clone</a> command interpreter with file storage and tests,
+          an <a href="https://github.com/brainiac2025/RSA-Factoring-Challenge">RSA factoring challenge</a>,
+          and the <a href="https://github.com/brainiac2025/alx-higher_level_programming">higher-level programming</a> track.
+        </span>
+      </li>
+      <li>
+        <span class="group">Java desktop apps and games</span><br>
+        <span class="desc">
+          A Swing <a href="https://github.com/brainiac2025/DownloadManager">download manager</a> with pause and resume,
+          a <a href="https://github.com/brainiac2025/SnakeGameSimulation">Snake game</a>,
+          a <a href="https://github.com/brainiac2025/NumberPuzzleGame">5×5 number puzzle</a>,
+          a text-based <a href="https://github.com/brainiac2025/DungeonGame">dungeon game</a>,
+          and a <a href="https://github.com/brainiac2025/wordAndCharacterCounter">word counter</a>.
+        </span>
+      </li>
+      <li>
+        <span class="group">Graphics</span><br>
+        <span class="desc">
+          <a href="marching-cubes.html">Building and running a Marching Cubes implementation</a>
+          in C++ with GLFW and GLEW, with screenshots and a video of the output.
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Afeez Amuzat · <a href="https://github.com/brainiac2025">github.com/brainiac2025</a></span>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark / light</button>
+  </footer>
+
+</main>
+<script>
+  (function () {
+    var root = document.documentElement;
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+    } catch (e) {}
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+      var current = root.getAttribute("data-theme");
+      if (!current) {
+        current = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      var next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
 </html>
