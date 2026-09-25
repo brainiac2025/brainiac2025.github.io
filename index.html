@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Afeez Amuzat</title>
-  <meta name="description" content="Research and software projects by Afeez Amuzat: causal discovery, e-graphs and rewrite rules, simulation, evolution and performance tuning.">
+  <meta name="description" content="Research and software projects by Afeez Amuzat: causal discovery, e-graphs and rewrite rules, simulation, evolution, performance tuning and NLP-based recommendation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -181,7 +181,7 @@
       checking whether the answer holds up. Most of my recent work sits
       somewhere between compilers, machine learning and simulation:
       equality saturation and rewrite rules, causal discovery,
-      performance tuning, and agent-based models. Each project below comes
+      performance tuning, agent-based models, and NLP for recommendation. Each project below comes
       with its code, its tests and a write-up that covers what worked and
       what didn't.
     </p>
@@ -368,6 +368,31 @@ let area   = (width + height) * 2;</pre>
       </div>
       <div class="actions">
         <a href="https://github.com/brainiac2025/matmul-autotuner">Code</a>
+      </div>
+    </article>
+
+    <!-- MyJobRec -->
+    <article class="project">
+      <h3>MyJobRec</h3>
+      <div class="meta">Python · Flask · NLP · recommender systems · BSc final-year project, 2026</div>
+      <p class="question">Can a job recommender explain <em>why</em> a job fits your CV, not just give it a score?</p>
+      <p>
+        Upload a CV (PDF or Word) and the app extracts your skills, experience
+        and education with spaCy, compares your profile against 1,600 job
+        postings, and returns the five closest matches. I compared five ways
+        of measuring the match: TF-IDF, Word2Vec, BERT sentence embeddings
+        (all-MiniLM-L12-v2), LDA topics, and a weighted ensemble. Each
+        recommendation comes with the skills you share with the job, the
+        ones you're missing, and a SHAP explanation of what drove the score.
+      </p>
+      <div class="finding">
+        <strong>Built:</strong> a full web app with sign-up, CV upload, ranked
+        matches, explanations and like/dislike feedback stored in MySQL. The
+        write-up is upfront about what's next: proper ranking metrics
+        (precision@k, NDCG), and using the feedback to re-rank.
+      </div>
+      <div class="actions">
+        <a href="https://github.com/brainiac2025/MyJobRec">Code and write-up</a>
       </div>
     </article>
   </section>
